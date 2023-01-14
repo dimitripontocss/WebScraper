@@ -1,7 +1,7 @@
 import { scraper } from "./webScrapper";
 
-export async function orderByPrice() {
-  const products = await scraper("Lenovo");
+export async function getOrderedInfo(searchFor: string) {
+  const products = await scraper(searchFor);
 
   products.forEach((p) => (p.price = p.price.slice(1)));
 
@@ -11,9 +11,5 @@ export async function orderByPrice() {
 
   products.forEach((p) => (p.price = "$" + p.price));
 
-  console.log(products);
-
   return products;
 }
-
-orderByPrice();

@@ -26,6 +26,6 @@ export async function scraper(searchFor: string) {
   await browser.close();
 
   return products.filter((validProduct) =>
-    validProduct.title.includes(searchFor)
+    validProduct.title.toLowerCase().includes(searchFor.toLowerCase())
   );
 }
