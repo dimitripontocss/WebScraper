@@ -4,7 +4,7 @@ const url =
   "https://webscraper.io/test-sites/e-commerce/allinone/computers/laptops";
 
 export async function scraper() {
-  const browser = await pup.launch({ headless: false });
+  const browser = await pup.launch();
   const page = await browser.newPage();
 
   await page.goto(url);
@@ -28,9 +28,7 @@ export async function scraper() {
 
   console.log(searchedProducts);
 
-  setTimeout(() => {
-    browser.close();
-  }, 3000);
+  await browser.close();
 }
 
 scraper();
