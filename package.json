@@ -1,0 +1,21 @@
+{
+  "name": "webscraper",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "webScrapper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./src/webScrapper.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^19.5.2"
+  },
+  "devDependencies": {
+    "@types/puppeteer": "^7.0.4",
+    "nodemon": "^2.0.20"
+  }
+}
