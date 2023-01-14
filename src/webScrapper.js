@@ -10,25 +10,21 @@ export async function scraper() {
   await page.goto(url);
 
   const products = await page.$$eval(".thumbnail", (parent) =>
-    parent.map((parent) => {
-      const title = parent.children[1].children[1].children[0].title;
+    parent.map((p) => {
+      const title = p.children[1].children[1].children[0].title;
       if (title.includes("Lenovo")) {
         return {
           title,
-          price: parent.children[1].children[0].innerHTML,
-          description: parent.children[1].children[2].innerHTML,
-          rating: parent.children[2].children[1].getAttribute("data-rating"),
-          numberOfReviews: parent.children[2].children[0].innerHTML,
+          price: p.children[1].children[0].innerHTML,
+          description: p.children[1].children[2].innerHTML,
+          rating: p.children[2].children[1].getAttribute("data-rating"),
+          numberOfReviews: p.children[2].children[0].innerHTML,
         };
       }
     })
   );
 
-  const searchedProducts = products.filter((p) => p);
-
-  console.log(searchedProducts);
-
   await browser.close();
-}
 
-scraper();
+  return products.filter((validProduct) => validProduct);
+}
